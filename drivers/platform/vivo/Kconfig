@@ -1,0 +1,19 @@
+# Vivo configuration options
+
+config MACH_VIVO
+	bool "Vivo device"
+	depends on ARCH_MSM
+	help
+	  Support for Vivo products
+
+config MACH_VIVO_MSM8916
+	bool "Vivo MSM8916"
+	depends on ARCH_MSM8916
+	select MACH_VIVO
+	help
+	  Support for MSM8916 Vivo variants
+
+menu "Vivo board selection"
+
+
+endmenu
