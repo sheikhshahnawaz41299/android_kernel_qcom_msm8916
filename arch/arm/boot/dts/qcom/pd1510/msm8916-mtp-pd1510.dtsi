@@ -34,7 +34,7 @@
 			//qcom,recharge-disabled;
 			regulator-name = "smb358_otg_vreg";
 			qcom,thermal-mitigation = <1300 700 600 0>;
-			qcom,fastchg-current-max-ma = <1000>;
+			qcom,fastchg-current-max-ma = <1300>;
 
 			qcom,disable-apsd;
 			qcom,bms-psy-name = "bms";
