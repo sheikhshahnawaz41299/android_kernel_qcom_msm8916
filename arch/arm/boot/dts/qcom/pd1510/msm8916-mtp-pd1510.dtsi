@@ -141,20 +141,30 @@
 		/delete-node/ avago@39;
 		/delete-node/ akm@c;
 
-		taos@39 {
-			compatible = "ams,tmd2772";
+		tsl2772@39 {
+			compatible = "taos,tsl2772";
 			reg = <0x39>;
+			pinctrl-names = "default","sleep";
+			pinctrl-0 = <&tsl2772x_default>;
+			pinctrl-1 = <&tsl2772x_sleep>;
 			interrupt-parent = <&msm_gpio>;
 			interrupts = <113 0x2002>;
-			pinctrl-names = "tmd2772_default","tmd2772_sleep";
-			pinctrl-0 = <&apds99xx_default>;
-			pinctrl-1 = <&apds99xx_sleep>;
 			vdd-supply = <&pm8916_l17>;
 			vio-supply = <&pm8916_l6>;
-			ams,irq-gpio = <&msm_gpio 113 0x2002>;
-			ams,pul_cnt = <12>;
-			ams,light-percent = <150>;
-			status = "disabled";
+			tsl,irq-gpio = <&msm_gpio 113 0x2002>;
+			tsl,als-gate = <10>;    
+			tsl,als-gain = <8>;     
+			tsl,control-reg = <0x21>; 
+			tsl,wait-reg = <0x00>;
+			tsl,ps-thdh = <950>;
+			tsl,ps-thdl = <900>;
+			tsl,ps-ppcount = <7>; 
+			tsl,ps-thdl_offset = <90>;
+			tsl,ps-thdh_offset = <180>;
+			tsl,mmi-thdh-limit = <800>;
+			tsl,mmi-thdl-limit = <0>;
+			tsl,use-fir;
+			status = "ok";
 		};
 
 		lis3dh_acc@18 {
