@@ -121,4 +121,20 @@
 			bias-disable = <0>;
 		};
 	};
+    
+    tsl2772x_int_pin {
+			qcom,pins = <&gp 113>;
+			qcom,pin-func = <0>;
+			qcom,num-grp-pins = <1>;
+			label = "tsl2772x-irq";
+			tsl2772x_default: tsl2772x_default {
+				drive-strength = <6>;
+				bias-pull-up;
+			};
+			tsl2772x_sleep: tsl2772x_sleep {
+				drive-strength = <6>;
+				bias-pull-up;
+			};
+		};
+         
 };
