@@ -785,6 +785,18 @@ config SENSORS_AKM09911
 	  To compile this driver as a module, choose M here: the
 	  module will be called akm09911.
 
+config SENSORS_HSCDTD007A
+	tristate "HSCDTD007A 3-axis electronic compass sensor driver"
+	depends on I2C
+        default y
+	help
+	  Say Y here if you want to enable the 	hscdtd007a ecompass sensor
+	  driver.
+
+	  To compile this driver as a module, choose M here: the
+	  module will be called hscdtd007a.
+
+
 config SENSORS_AKM8963
 	tristate "AKM8963 3-axis electronic compass sensor driver"
 	depends on I2C

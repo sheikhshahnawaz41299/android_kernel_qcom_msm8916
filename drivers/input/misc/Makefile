@@ -105,4 +105,6 @@ ifeq ($(CONFIG_SENSORS_BMI160_I2C),y)
 	EXTRA_CFLAGS += -DBMI_USE_BASIC_I2C_FUNC
 endif
 
+obj-y	                             += hscdtd007a.o
+
 obj-$(CONFIG_SENSORS_TSL2772)	+= tsl277x.o
