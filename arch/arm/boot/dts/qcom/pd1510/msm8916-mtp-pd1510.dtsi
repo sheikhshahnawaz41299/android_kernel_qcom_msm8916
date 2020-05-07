@@ -190,13 +190,13 @@
 			status = "ok";
 		};
 
-		alps007@0c {
-			compatible = "alps,hscdtd007a";
-			reg = <0xc>;
-			alps,orientation = <5>;
-			vdd-supply = <&pm8916_l17>;
-			vio-supply = <&pm8916_l6>;
-			status = "disabled";
+		alps@c { /* Magnetic field sensor */
+		     compatible = "alps,hscdtd007a";
+		     reg = <0x0c>;
+		     vdd-supply = <&pm8916_l17>;
+		     vio-supply = <&pm8916_l6>;
+		     hscdtd,layout = <0x5>;
+			 status = "ok";
 		};
 
 		yamaha@2e {
