@@ -416,7 +416,7 @@ static int smb358_fastchg_current_set(struct smb358_charger *chip,
 	}
 
 	i = i << SMB358_FAST_CHG_SHIFT;
-	dev_info(chip->dev, "fastchg limit=%d setting %02x\n",
+	dev_dbg(chip->dev, "fastchg limit=%d setting %02x\n",
 					fastchg_current, i);
 
 	return smb358_masked_write(chip, CHG_CURRENT_CTRL_REG,
@@ -674,7 +674,7 @@ static int smb358_charging_disable(struct smb358_charger *chip,
 
 	disabled = chip->charging_disabled_status;
 
-	printk("reason = %d requested_disable = %d disabled_status = %d\n",
+	pr_debug("reason = %d requested_disable = %d disabled_status = %d\n",
 						reason, disable, disabled);
 
 	if (disable == true)
@@ -984,7 +984,7 @@ static int smb358_get_prop_batt_temp(struct smb358_charger *chip)
 		pr_debug("Unable to read batt temperature rc=%d\n", rc);
 		return DEFAULT_TEMP;
 	}
-	printk("get_bat_temp %d, %lld\n",
+	pr_debug("get_bat_temp %d, %lld\n",
 		results.adc_code, results.physical);
 
 	return (int)results.physical;
@@ -1055,7 +1055,7 @@ static int smb358_set_usb_chg_current(struct smb358_charger *chip,
 	int i, rc = 0;
 	u8 reg1 = 0, reg2 = 0, mask = 0;
 
-	dev_info(chip->dev, "%s: USB current_ma = %d\n", __func__, current_ma);
+	dev_dbg(chip->dev, "%s: USB current_ma = %d\n", __func__, current_ma);
 
 	if (chip->chg_autonomous_mode) {
 		dev_dbg(chip->dev, "%s: Charger in autonmous mode\n", __func__);
@@ -1331,7 +1331,7 @@ static int apsd_complete(struct smb358_charger *chip, u8 status)
 		power_supply_set_supply_type(chip->usb_psy, type);
 
 	 /* SMB is now done sampling the D+/D- lines, indicate USB driver */
-	dev_info(chip->dev, "%s updating usb_psy present=%d", __func__,
+	dev_dbg(chip->dev, "%s updating usb_psy present=%d", __func__,
 			chip->chg_present);
 	power_supply_set_present(chip->usb_psy, chip->chg_present);
 
@@ -1406,14 +1406,14 @@ static int fast_chg(struct smb358_charger *chip, u8 status)
 
 static int chg_term(struct smb358_charger *chip, u8 status)
 {
-	dev_info(chip->dev, "%s\n", __func__);
+	dev_dbg(chip->dev, "%s\n", __func__);
 	chip->batt_full = !!status;
 	return 0;
 }
 
 static int taper_chg(struct smb358_charger *chip, u8 status)
 {
-	dev_info(chip->dev, "%s\n", __func__);
+	dev_dbg(chip->dev, "%s\n", __func__);
 	return 0;
 }
 
@@ -1635,7 +1635,7 @@ static void smb_chg_adc_notification(enum qpnp_tm_state state, void *ctx)
 		smb358_chg_set_appropriate_vddmax(chip);
 	}
 
-	printk("hot %d, cold %d, warm %d, cool %d, jeita supported %d, missing %d, low = %d deciDegC, high = %d deciDegC\n",
+	pr_debug("hot %d, cold %d, warm %d, cool %d, jeita supported %d, missing %d, low = %d deciDegC, high = %d deciDegC\n",
 		chip->batt_hot, chip->batt_cold, chip->batt_warm,
 		chip->batt_cool, chip->jeita_supported, chip->battery_missing,
 		chip->adc_param.low_temp, chip->adc_param.high_temp);
@@ -1831,7 +1831,7 @@ static irqreturn_t smb358_chg_stat_handler(int irq, void *dev_id)
 	for (i = 0; i < ARRAY_SIZE(handlers); i++) {
 		rc = smb358_read_reg(chip, handlers[i].stat_reg,
 						&handlers[i].val);
-		dev_info(chip->dev,"stat_reg:0x%x,value:0x%x.\n",handlers[i].stat_reg,handlers[i].val);
+		dev_dbg(chip->dev,"stat_reg:0x%x,value:0x%x.\n",handlers[i].stat_reg,handlers[i].val);
 		if (rc < 0) {
 			dev_err(chip->dev, "Couldn't read %d rc = %d\n",
 					handlers[i].stat_reg, rc);
@@ -1846,7 +1846,7 @@ static irqreturn_t smb358_chg_stat_handler(int irq, void *dev_id)
 			prev_rt_stat = handlers[i].prev_val
 				& (IRQ_STATUS_MASK << (j * BITS_PER_IRQ));
 			changed = prev_rt_stat ^ rt_stat;
-			dev_info(chip->dev,"irq_name:%s,triggered:0x%x,rt_stat:0x%x,prev_rt_stat:0x%x,changed:0x%x.\n",
+			dev_dbg(chip->dev,"irq_name:%s,triggered:0x%x,rt_stat:0x%x,prev_rt_stat:0x%x,changed:0x%x.\n",
 							handlers[i].irq_info[j].name,triggered,rt_stat,prev_rt_stat,changed);
 			if (triggered || changed)
 				rt_stat ? handlers[i].irq_info[j].high++ :
@@ -1866,9 +1866,9 @@ static irqreturn_t smb358_chg_stat_handler(int irq, void *dev_id)
 		handlers[i].prev_val = handlers[i].val;
 	}
 
-	printk("handler count = %d\n", handler_count);
+	pr_debug("handler count = %d\n", handler_count);
 	if (handler_count) {
-		dev_info(chip->dev,"batt psy changed\n");
+		pr_debug("batt psy changed\n");
 		power_supply_changed(&chip->batt_psy);
 	}
 
