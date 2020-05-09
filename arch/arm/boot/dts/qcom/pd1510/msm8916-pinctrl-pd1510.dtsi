@@ -68,7 +68,7 @@
 		label = "goodix_ts_int";
 
 		gdix_ts_int_default: gdix_ts_int_default {
-			drive-strength = <16>;
+			drive-strength = <2>;
 			input-enable;
 			bias-disable;
 		};
@@ -94,7 +94,7 @@
 		label = "goodix_ts_rst";
 
 		gdix_ts_rst_default: gdix_ts_rst_default {
-			drive-strength = <16>;
+			drive-strength = <2>;
 			input-enable;
 			bias-disable;
 		};
