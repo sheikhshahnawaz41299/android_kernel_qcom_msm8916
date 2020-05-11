@@ -1,0 +1,37 @@
+/* Copyright (c) 2014,2020 The Linux Foundation. All rights reserved.
+*  Copyright (c) 2020, the_shahnawaz_sheikh.
+*
+* This program is free software; you can redistribute it and/or modify
+* it under the terms of the GNU General Public License version 2 and
+* only version 2 as published by the Free Software Foundation.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*/
+
+/dts-v1/;
+
+#include "msm8916-mtp.dtsi"
+#include "msm8916-memory.dtsi"
+#include "pd1309/msm8916-mtp-pd1309.dtsi"
+
+
+/ {
+	model = "Qualcomm Technologies, Inc. MSM 8916 MTP - PD1309F_EX";
+	compatible = "qcom,msm8916-mtp", "qcom,msm8916", "qcom,mtp";
+	qcom,board-id = <8 13>;
+};
+
+&usb_otg {
+	qcom,hsusb-otg-phy-init-seq = <0x74 0x80 0x68 0x81 0x38 0x82 0x33 0x83 0xffffffff>;
+	qcom,hsusb-otg-mode = <3>;
+	qcom,usbid-gpio = <&msm_gpio 110 0>;
+	pinctrl-names = "default", "active", "sleep";
+	pinctrl-0 = <&usbid_default>;
+	pinctrl-1 = <&usbid_default>;
+	pinctrl-2 = <&usbid_sleep>;
+	vbus_otg-supply = <&smb358_otg_vreg>;
+	qcom,usbin-vadc = <&pm8916_vadc>;
+};

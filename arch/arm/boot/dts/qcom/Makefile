@@ -82,6 +82,8 @@ dtb-$(CONFIG_ARCH_MSM8909) += msm8909-sim.dtb \
 ifeq ($(CONFIG_MACH_VIVO_MSM8916),y)
 dtb-$(CONFIG_MACH_PD1510) += msm8916-mtp-pd1510.dtb \
 	msm8916-mtp-pd1510f_ex.dtb
+dtb-$(CONFIG_MACH_PD1309) += msm8916-mtp-pd1309.dtb \
+    msm8916-mtp-pd1309f_ex.dtb
 else
 
 dtb-$(CONFIG_ARCH_MSM8916) += msm8916-cdp.dtb \
