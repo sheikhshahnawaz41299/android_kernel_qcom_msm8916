@@ -21,4 +21,10 @@ config MACH_PD1510
 	help
 	  Support for Vivo PD1510 variant
 
+config MACH_PD1309
+	bool "PD1309 board"
+	select MACH_VIVO_MSM8916
+	help
+	  Support for Vivo PD1309 variant
+
 endmenu
