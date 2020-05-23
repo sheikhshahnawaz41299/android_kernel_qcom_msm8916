@@ -993,15 +993,17 @@ static int smb358_get_prop_batt_temp(struct smb358_charger *chip)
 static int
 smb358_get_prop_battery_voltage_now(struct smb358_charger *chip)
 {
-	int rc = 0;
-	struct qpnp_vadc_result results;
+	union power_supply_propval ret = {0,};
+	int last_ocv_uv;
 
-	rc = qpnp_vadc_read(chip->vadc_dev, VBAT_SNS, &results);
-	if (rc) {
-		pr_err("Unable to read vbat rc=%d\n", rc);
-		return 0;
-	}
-	return results.physical;
+	if (chip->bms_psy) {
+		chip->bms_psy->get_property(chip->bms_psy,
+				POWER_SUPPLY_PROP_VOLTAGE_OCV, &ret);
+		last_ocv_uv = ret.intval;
+		return last_ocv_uv;
+	} else {
+	       }
+	return 0;
 }
 
 static int __smb358_path_suspend(struct smb358_charger *chip, bool suspend)
