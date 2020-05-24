@@ -13,6 +13,13 @@
 */
 
 #include "dsi-panel-tmotm9605a-qhd-video.dtsi"
+#include "dsi-panel-boeb1otm9605a-qhd-video.dtsi"
+#include "dsi-panel-boeotm9605a-qhd-ch-video.dtsi"
+#include "dsi-panel-boeotm9605a-qhd-video.dtsi"
+#include "dsi-panel-tmotm9605a-qhd-ch-video.dtsi"
+#include "dsi-panel-tryhx8389c-qHD-ch-video.dtsi"
+#include "dsi-panel-tryhx8389c-qHD-video.dtsi"
+#include "dsi-panel-boehx8389c-qHD-video.dtsi"
 #include "msm8916-camera-sensor-mtp-pd1510.dtsi"
 #include "msm8916-pinctrl-pd1510.dtsi"
 #include "msm8916-common-pd1510.dtsi"
@@ -303,6 +310,15 @@
 
 &mdss_dsi0 {
 	qcom,dsi-pref-prim-pan = <&dsi_tmotm9605a_qhd_video>;
+        
+    qcom,dsi-pref-sub-pan = <&dsi_boeb1otm9605a_qhd_vid>;
+	qcom,dsi-pref-sub1-pan = <&dsi_boehx8389c_qHD_video>;
+    qcom,dsi-pref-sub2-pan = <&dsi_boeotm9605a_qhd_vid_ch>;
+    qcom,dsi-pref-sub3-pan = <&dsi_boeotm9605a_qhd_vid>;
+    qcom,dsi-pref-sub4-pan = <&dsi_tmotm9605a_qhd_vid_ch>;
+    qcom,dsi-pref-sub5-pan = <&dsi_tryhx8389c_qHD_video_ch>;
+    qcom,dsi-pref-sub6-pan = <&dsi_tryhx8389c_qHD_video>;
+
 	qcom,platform-enable-gpio = <&msm_gpio 97 0>;
 	qcom,platform-reset-gpio = <&msm_gpio 25 0>;
 	qcom,platform-bklight-en-gpio = <&msm_gpio 8 0>;
