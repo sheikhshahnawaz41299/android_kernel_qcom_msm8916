@@ -36,7 +36,7 @@
 				qcom,mdss-dsi-v-top-border = <0>;
 				qcom,mdss-dsi-v-bottom-border = <0>;
 				qcom,mdss-dsi-bpp = <24>;
-				qcom,mdss-dsi-underflow-color = <255>;
+				qcom,mdss-dsi-underflow-color = <0xff>;
 				qcom,mdss-dsi-border-color = <0>;
 				qcom,mdss-dsi-pixel-packing = "tight";
 				qcom,mdss-dsi-on-command = [39 01 00 00 00 00 04 b9 ff 83 89 39 01 00 00 00 00 11 b1 7f 0f 0f 34 34 50 d0 e8 94 80 20 20 f8 aa aa a1 39 01 00 00 00 00 0b b2 80 50 09 03 54 38 11 64 55 09 39 01 00 00 00 00 0c b4 18 6e 1c 56 00 00 10 74 10 74 90 39 01 00 00 00 00 24 d3 00 03 00 01 02 08 00 32 10 00 00 00 00 00 00 00 00 00 00 00 37 33 04 04 37 06 06 37 09 08 00 00 0a 00 01 39 01 00 00 00 00 27 d5 19 19 18 18 19 19 18 18 18 18 03 02 18 18 01 00 18 18 07 06 18 18 05 04 21 20 23 22 18 18 18 18 18 18 18 18 18 18 39 01 00 00 00 00 27 d6 18 18 19 19 19 19 18 18 18 18 04 05 18 18 06 07 18 18 00 01 18 18 02 03 22 23 20 21 18 18 18 18 18 18 18 18 18 18 39 01 00 00 00 00 02 b6 79 39 01 00 00 00 00 2b e0 00 06 09 29 32 3f 13 35 06 09 0c 17 0e 10 13 12 13 07 12 14 18 00 06 09 2a 31 3f 13 35 06 09 0c 17 0e 11 14 12 14 07 11 12 18 39 01 00 00 00 00 02 bd 00 39 01 00 00 00 00 2c c1 01 00 07 0d 14 1b 23 2b 33 3c 45 4d 55 5d 64 6c 74 7c 82 8a 92 99 a2 aa b3 bb c3 cb d4 dc e5 ec f6 fe 0e 9f 80 6a 30 ca 58 ce 00 39 01 00 00 00 00 02 bd 01 39 01 00 00 00 00 2b c1 00 07 0d 14 1b 23 2c 34 3d 45 4d 55 5e 65 6d 75 7c 84 8c 93 9b a3 ac b4 bc c5 cd d6 de e7 ef f8 ff 0f f6 3b 39 e2 bb dd c8 c0 39 01 00 00 00 00 02 bd 02 39 01 00 00 00 00 2b c1 00 07 0d 14 1b 24 2d 35 3e 46 4e 57 5f 67 6e 76 7d 85 8c 94 9c a4 ad b5 bc c4 cc d5 dc e4 ec f4 fa 0f c1 3c 0d dc 10 e9 e9 c0 39 01 00 00 00 00 02 bd 00 39 01 00 00 00 00 05 c7 00 80 60 c0 39 01 00 00 00 00 05 c0 30 15 00 03 39 01 00 00 00 00 02 d2 22 39 01 00 00 00 00 02 cc 02 39 01 00 00 00 00 02 35 00 39 01 00 00 96 00 02 11 00 39 01 00 00 14 00 02 29 00];
@@ -50,7 +50,7 @@
 				qcom,mdss-dsi-hbp-power-mode;
 				qcom,mdss-dsi-lane-0-state;
 				qcom,mdss-dsi-lane-1-state;
-				qcom,mdss-dsi-panel-timings = <0x8b1e1400 0x44481828 0x19030400>;
+				qcom,mdss-dsi-panel-timings = [4D 0C 08 00 2C 2E 0C 10 0B 03 04 00];
 				qcom,mdss-dsi-t-clk-post = <0x4>;
 				qcom,mdss-dsi-t-clk-pre = <0x1b>;
 				qcom,mdss-dsi-lp11-init;
