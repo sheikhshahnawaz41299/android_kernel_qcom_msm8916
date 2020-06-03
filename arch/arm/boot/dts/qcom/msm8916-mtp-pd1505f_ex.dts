@@ -1,0 +1,43 @@
+/*  Copyright (c) 2020, The Linux Foundation. All rights reserved.
+ *  Copyright (c) 2020, the_shahnawaz_sheikh (sheikhshahnawaz41299).
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+/dts-v1/;
+
+#include "msm8916-mtp.dtsi"
+#include "msm8916-memory.dtsi"
+#include "pd1505/msm8916-mtp-pd1505.dtsi"
+
+/ {
+	model = "Qualcomm Technologies, Inc. MSM 8916 MTP - PD1505F_EX";
+	compatible = "qcom,msm8916-mtp", "qcom,msm8916", "qcom,mtp";
+	qcom,board-id = <8 10>;
+};
+
+&soc {
+	i2c@78b9000 {
+		gt9xx-i2c@14 {
+			goodix,cfg-data0 = [42 1c 02 09 04 0a 34 10 01 08 28 08 50 32 33 35 00 00 37 13 00 22 00 14 14 28 14 8b 2b 0c 37 39 d3 07 d3 07 00 9a 33 11 00 00 00 00 00 03 00 08 0a a0 22 1e 5f 94 d0 02 8c 19 00 04 c6 21 00 a0 2a 1e 84 35 00 6d 43 00 5b 55 00 5b 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ff 01 00 00 00 00 00 00 00 00 00 0f 50 00 00 00 00 1e 0e 10 12 18 16 14 06 04 02 08 0a 0c ff ff 00 00 00 00 00 00 00 00 08 00 78 04 fe 00 50 41 00 02 04 06 08 0a 0c 0f 10 12 13 16 18 1c 1d 1e 1f 20 21 22 24 26 ff ff ff ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 01];
+			goodix,cfg-data2 = [43 1c 02 09 04 0a 34 10 01 08 32 08 50 32 33 35 00 00 37 13 00 22 00 14 14 28 14 8b 2b 0c 37 39 d3 07 d3 07 00 9a 33 11 00 00 00 00 00 03 00 08 0a a0 22 1e 5f 94 d0 02 8c 19 00 04 c6 21 00 a0 2a 1e 84 35 00 6d 43 00 5b 55 00 5b 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ff 01 00 00 00 00 00 00 00 00 00 0f 50 00 00 00 00 1e 0e 10 12 18 16 14 06 04 02 08 0a 0c ff ff 00 00 00 00 00 00 00 00 08 00 78 04 fe 00 50 41 00 02 04 06 08 0a 0c 0f 10 12 13 16 18 1c 1d 1e 1f 20 21 22 24 26 ff ff ff ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 f8 01];
+			goodix,cfg-data3 = [42 1c 02 09 04 0a 34 10 01 08 28 08 50 32 33 35 00 00 37 13 00 22 00 14 14 28 14 8b 2b 0c 37 39 d3 07 d3 07 00 9a 33 11 00 00 00 00 00 03 00 08 0a a0 22 1e 5f 94 d0 02 8c 19 00 04 c6 21 00 a0 2a 1e 84 35 00 6d 43 00 5b 55 00 5b 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ff 01 00 00 00 00 00 00 00 00 00 0f 50 00 00 00 00 1e 0e 10 12 18 16 14 06 04 02 08 0a 0c ff ff 00 00 00 00 00 00 00 00 08 00 78 04 fe 00 50 41 00 02 04 06 08 0a 0c 0f 10 12 13 16 18 1c 1d 1e 1f 20 21 22 24 26 ff ff ff ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 01];
+		};
+	};
+};
+
+&usb_otg {
+	qcom,hsusb-otg-phy-init-seq = <0x74 0x80 0x68 0x81 0x38 0x82 0x33 0x83 0xffffffff>;
+	qcom,hsusb-otg-mode = <2>;
+	qcom,usbid-gpio = <&msm_gpio 110 0>;
+	pinctrl-names = "default";
+	pinctrl-0 = <&usbid_default>;
+	vbus_otg-supply = <&smb358_otg_vreg>;
+};
